@@ -10,11 +10,11 @@ void ATMachine::displayMenu() {
 	cout << "----------------------" << endl;
 	cout << "-    TUKOREA BANK    -" << endl;
 	cout << "----------------------" << endl;
-	cout << "1. °³ÁÂ °³¼³" << endl;
-	cout << "2. °³ÁÂ Á¶È¸" << endl;
-	cout << "3. °èÁÂ ÀÔ±Ý" << endl;
-	cout << "4. °èÁÂ Ãâ±Ý" << endl;
-	cout << "9. ¾÷¹« Á¾·á" << endl;
+	cout << "1. ê°œì¢Œ ê°œì„¤" << endl;
+	cout << "2. ê°œì¢Œ ì¡°íšŒ" << endl;
+	cout << "3. ê³„ì¢Œ ìž…ê¸ˆ" << endl;
+	cout << "4. ê³„ì¢Œ ì¶œê¸ˆ" << endl;
+	cout << "9. ì—…ë¬´ ì¢…ë£Œ" << endl;
 }
 
 void ATMachine::createAccount() {
@@ -22,18 +22,18 @@ void ATMachine::createAccount() {
 	string password;
 	srand((unsigned int)time(0));
 	int AccNum = BASE_ACCOUNT_ID + (rand() % 901);
-	cout << "------ °³¼³ ------" << endl;
-	cout << "ÀÌ¸§ ÀÔ·Â : ";
+	cout << "------ ê°œì„¤ ------" << endl;
+	cout << "ì´ë¦„ ìž…ë ¥ : ";
 	cin >> name;
-	cout << "¾ÏÈ£ ÀÔ·Â : ";
+	cout << "ì•”í˜¸ ìž…ë ¥ : ";
 	cin >> password;
 
 	if (idx >= 1000) {
-		cout << "°èÁÂ°¡ 1000°³°¡ ³Ñ¾î°¡¼­ ´õÀÌ»ó °èÁÂ °³¼³ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù." << endl;
+		cout << "ê³„ì¢Œê°€ 1000ê°œê°€ ë„˜ì–´ê°€ì„œ ë”ì´ìƒ ê³„ì¢Œ ê°œì„¤ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤." << endl;
 		return;
 	}
-	cout << endl << name << "´Ô " << AccNum;
-	cout << "¹ø °èÁÂ¹øÈ£°¡ Á¤»óÀûÀ¸·Î °³¼³µÇ¾úÀ¾´Ï´Ù. °¨»çÇÕ´Ï´Ù" << endl;
+	cout << endl << name << "ë‹˜ " << AccNum;
+	cout << "ë²ˆ ê³„ì¢Œë²ˆí˜¸ê°€ ì •ìƒì ìœ¼ë¡œ ê°œì„¤ë˜ì—ˆìë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤" << endl;
 
 	Account* account = new Account(AccNum, 0, name, password);
 	pAcctArray[idx] = account;
@@ -44,69 +44,69 @@ void ATMachine::createAccount() {
 void ATMachine::closeAccount() {
 	for (int i = 0; i < idx; i++)
 		delete pAcctArray[i];
-	cout << "¾È³çÈ÷ °¡¼¼¿ä" << endl;
+	cout << "ì•ˆë…•ížˆ ê°€ì„¸ìš”" << endl;
 }
 
 void ATMachine::checkMoney() {
 	int id, res = 0;
 	string password;
-	cout << "------ Á¶È¸ ------" << endl;
-	cout << "°èÁÂ¹øÈ£ ÀÔ·Â : ";
+	cout << "------ ì¡°íšŒ ------" << endl;
+	cout << "ê³„ì¢Œë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> id;
-	cout << "ºñ¹Ð¹øÈ£ ÀÔ·Â : ";
+	cout << "ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> password;
 	for (int i = 0; i < idx; i++) {
 		if (pAcctArray[i]->check(id, password) != AUTHENTIFICATION_FAIL) {
 			res = 1;
-			cout << "ÇöÀç ÀÜ¾× : " << pAcctArray[i]->check(id, password) << endl;
+			cout << "í˜„ìž¬ ìž”ì•¡ : " << pAcctArray[i]->check(id, password) << endl;
 			return;
 		}
 	}
 	if (res == 0)
-		cout << "°èÁÂ ÀÎÁõ ½ÇÆÐ";
+		cout << "ê³„ì¢Œ ì¸ì¦ ì‹¤íŒ¨";
 }
 
 void ATMachine::depositMoney() {
 	int id, money, res;
 	string password;
-	cout << "------ ÀÔ±Ý ------" << endl;
-	cout << "°èÁÂ¹øÈ£ ÀÔ·Â : ";
+	cout << "------ ìž…ê¸ˆ ------" << endl;
+	cout << "ê³„ì¢Œë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> id;
-	cout << "ºñ¹Ð¹øÈ£ ÀÔ·Â : ";
+	cout << "ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> password;
-	cout << "ÀÔ±Ý¾× ÀÔ·Â : ";
+	cout << "ìž…ê¸ˆì•¡ ìž…ë ¥ : ";
 	cin >> money;
 
 	for (int i = 0; i < idx; i++) {
 		if (pAcctArray[i]->getAcctID() == id && pAcctArray[i]->getPassword() == password) {
 			res = pAcctArray[i]->deposit(money);
-			cout << "ÇöÀç ÀÜ¾× : " << res << endl;
+			cout << "í˜„ìž¬ ìž”ì•¡ : " << res << endl;
 			return;
 		}
 	}
-	cout << "°èÁÂ ÀÎÁõ ½ÇÆÐ";
+	cout << "ê³„ì¢Œ ì¸ì¦ ì‹¤íŒ¨";
 }
 
 void ATMachine::widrawMoney() {
 	int id, money, res;
 	string password;
-	cout << "------ Ãâ±Ý ------" << endl;
-	cout << "°èÁÂ¹øÈ£ ÀÔ·Â : ";
+	cout << "------ ì¶œê¸ˆ ------" << endl;
+	cout << "ê³„ì¢Œë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> id;
-	cout << "ºñ¹Ð¹øÈ£ ÀÔ·Â : ";
+	cout << "ë¹„ë°€ë²ˆí˜¸ ìž…ë ¥ : ";
 	cin >> password;
-	cout << "Ãâ±Ý¾× ÀÔ·Â : ";
+	cout << "ì¶œê¸ˆì•¡ ìž…ë ¥ : ";
 	cin >> money;
 	for (int i = 0; i < idx; i++) {
 		if (pAcctArray[i]->getAcctID() == id && pAcctArray[i]->getPassword() == password) {
 			res = pAcctArray[i]->widraw(money);
 			if (res == 0) {
-				cout << "ÀÜ¾× ºÎÁ·" << endl;
+				cout << "ìž”ì•¡ ë¶€ì¡±" << endl;
 				break;
 			}
-			cout << "ÇöÀç ÀÜ¾× : " << res << endl;
+			cout << "í˜„ìž¬ ìž”ì•¡ : " << res << endl;
 			return;
 		}
 	}
-	cout << "°èÁÂ ÀÎÁõ ½ÇÆÐ" << endl;
+	cout << "ê³„ì¢Œ ì¸ì¦ ì‹¤íŒ¨" << endl;
 }
