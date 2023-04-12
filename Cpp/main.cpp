@@ -9,7 +9,7 @@ int main() {
 
 	while (1) {
 		atm.displayMenu();
-		cout << "¸Þ´º¸¦ ¼±ÅÃÇÏ¼¼¿ä: ";
+		cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”: ";
 		cin >> select;
 		cout << endl;
 
@@ -30,7 +30,7 @@ int main() {
 			atm.closeAccount();
 			return 0;
 		default:
-			cout << "¹øÈ£ È®ÀÎ ÈÄ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä." << endl;
+			cout << "ë²ˆí˜¸ í™•ì¸ í›„ ë‹¤ì‹œ ìž…ë ¥í•˜ì„¸ìš”." << endl;
 		}
 	}
 }
