@@ -2,6 +2,7 @@
 #include<string>
 #include "Account.h"
 #include "ATMachine.h"
+#include "Statistics.h"
 
 using std::string;
 
@@ -19,9 +20,12 @@ int Account::check(int id, string password) {
 		return AUTHENTIFICATION_FAIL;
 }
 
-int Account::deposit(int money) {
-	nBalance += money;
-	return nBalance;
+int Account::deposit(int id, int money) {
+	if (nID == id) {
+		nBalance += money;
+		return nBalance;
+	}
+	else return nBalance;
 }
 
 int Account::widraw(int money) {
