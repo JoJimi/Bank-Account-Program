@@ -2,6 +2,7 @@
 using namespace std;
 #include "Account.h"
 #include "ATMachine.h"
+#include "Statistics.h"
 
 int main() {
 	int select;
@@ -25,6 +26,12 @@ int main() {
 			break;
 		case 4:
 			atm.widrawMoney();
+			break;
+		case 5:
+			atm.transfer();
+			break;
+		case 6:
+			atm.managerMode();
 			break;
 		case 9:
 			atm.closeAccount();
